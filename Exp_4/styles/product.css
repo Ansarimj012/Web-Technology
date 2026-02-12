@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    background-color: #00adb5;
+    color: white;
+}
+
+
+.logo .brand {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+
+.search-box {
+    flex: 1;
+    text-align: center;
+}
+
+.search-box input {
+    width: 60%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+
+.nav-right a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #456b6d;
+}
+
+
+/* Banner Section */
+.banner-section {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    background-color: #f1f3f6;
+}
+
+/* Banner Cards */
+.banner-card {
+    flex: 1;
+    height: 200px;
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Different Colors */
+.red {
+    background: linear-gradient(to right, #c31432, #240b36);
+}
+
+.blue {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+}
+
+.dark {
+    background: linear-gradient(to right, #000000, #434343);
+}
+
+.banner-card h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.banner-card p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.banner-card span {
+    font-size: 14px;
+    background: rgba(255,255,255,0.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 30px;
+}
+
+.product-card {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 150px;
+}
+
+.product-card h4 {
+    margin: 10px 0;
+}
+
+.product-card p {
+    color: green;
+    font-weight: bold;
+}
+
+.product-card button {
+    padding: 8px 12px;
+    background-color: #00adb5;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background-color: #4b6869;
+}
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Technologies Experiment</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f6f9;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 28px;
+            color: rgb(60, 231, 231);
+            margin-bottom: 5px;
+        }
+
+        h6 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: gray;
+        }
+
+        /* Column Layout */
+        .box {
+            display: flex;
+            flex-direction: column;   /* Makes items column wise */
+            gap: 15px;                /* Space between buttons */
+        }
+
+        /* Button Style */
+        .box a {
+            text-decoration: none;
+        }
+
+        .box button {
+            width: 350px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Hover Effect */
+        .box button:hover {
+            background: rgb(60, 231, 231);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h3>Web Technologies Experiment</h3>
+    <h6>Experiment List</h6>
+
+    <div class="box">
+        <a href="Exp_1/index.html">
+            <button>Experiment 1 (Portfolio with HTML Only)</button>
+        </a>
+
+        <a href="Exp_2/index.html">
+            <button>Experiment 2 (Ecommerce with HTML Only)</button>
+        </a>
+
+        <a href="Exp_3/index.html">
+            <button>Experiment 3 (Portfolio with HTML & CSS)</button>
+        </a>
+
+        <a href="Exp_4/index.html">
+            <button>Experiment 4 (Ecommerce with HTML & CSS)</button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
