@@ -20,7 +20,6 @@ body{
     justify-content:center;
     align-items:center;
 
-    /* Blue Gradient Background */
     background: linear-gradient(
         135deg,
         rgba(10,25,70,0.95),
@@ -39,11 +38,12 @@ body{
 
 /* Logo */
 .logo img{
+    margin-top: 10px;
     width:280px;
     margin-bottom:20px;
 }
 
-/* Bigger Course Title */
+/* Course Title */
 .course-title{
     font-size:28px;
     font-weight:600;
@@ -66,7 +66,7 @@ body{
 }
 
 .submitted{
-    width:50%;
+    width:45%;
     text-align:left;  
 }
 
@@ -92,39 +92,58 @@ body{
 .experiment-title{
     font-size:35px;
     margin-bottom:30px;
-    font-weight: bold;
+    font-weight:bold;
 }
 
 .experiment-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:30px;
+}
+
+/* Make link full size */
+.experiment-link{
+    text-decoration:none;
+    display:block;
+    height:50%;
 }
 
 /* Experiment Cards */
 .experiment-card{
     background:white;
     color:#333;
-    padding:30px;
     border-radius:15px;
-    transition:0.3s ease;
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
 
-.experiment-card:hover{
-    background: linear-gradient(
-        135deg,
-        rgba(86, 134, 189, 0.9),
-        rgba(71, 133, 226, 0.9)
-    );
-    color:white;
-    transform:translateY(-8px);
+    height:150px; /* SAME HEIGHT */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    transition:0.3s ease;
 }
 
 .experiment-card h3{
     margin-bottom:10px;
 }
 
+/* Hover Effect */
+.experiment-link:hover .experiment-card{
+    background: linear-gradient(
+        135deg,
+        rgba(86,134,189,0.9),
+        rgba(71,133,226,0.9)
+    );
+    color:white;
+    transform:translateY(-8px);
+}
+
+/* After Visiting */
+.experiment-link:visited .experiment-card{
+    background:#1e3c72;
+    color:white;
+}
 
 </style>
 </head>
@@ -138,7 +157,7 @@ body{
     </div>
 
     <div class="course-title">
-        WEB TECHNOLOGIES ( 23CSE404 )
+        WEB TECHNOLOGIES (23CSE404)
     </div>
 
     <!-- Submitted Section -->
@@ -167,25 +186,33 @@ body{
 
         <div class="experiment-grid">
 
-            <div class="experiment-card">
-                <h3>Experiment 1</h3>
-                <p>Portfolio with HTML Only</p>
-            </div>
+            <a href="Exp_1/index.html" class="experiment-link">
+                <div class="experiment-card">
+                    <h3>Experiment 1</h3>
+                    <p>Portfolio with HTML Only</p>
+                </div>
+            </a>
 
-            <div class="experiment-card">
-                <h3>Experiment 2</h3>
-                <p>Ecommerce with HTML Only</p>
-            </div>
+            <a href="Exp_2/index.html" class="experiment-link">
+                <div class="experiment-card">
+                    <h3>Experiment 2</h3>
+                    <p>Ecommerce with HTML Only</p>
+                </div>
+            </a>
 
-            <div class="experiment-card">
-                <h3>Experiment 3</h3>
-                <p>Portfolio with HTML & CSS</p>
-            </div>
+            <a href="Exp_3/index.html" class="experiment-link">
+                <div class="experiment-card">
+                    <h3>Experiment 3</h3>
+                    <p>Portfolio with HTML & CSS</p>
+                </div>
+            </a>
 
-            <div class="experiment-card">
-                <h3>Experiment 4</h3>
-                <p>Ecommerce with HTML & CSS</p>
-            </div>
+            <a href="Exp_4/index.html" class="experiment-link">
+                <div class="experiment-card">
+                    <h3>Experiment 4</h3>
+                    <p>Ecommerce with HTML & CSS</p>
+                </div>
+            </a>
 
         </div>
 
