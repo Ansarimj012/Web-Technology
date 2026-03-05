@@ -11,7 +11,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
@@ -37,98 +37,110 @@ body{
 }
 
 /* Logo */
+
 .logo img{
-    margin-top: 10px;
-    width:280px;
+    margin-top:10px;
+    width:260px;
     margin-bottom:20px;
 }
 
 /* Course Title */
+
 .course-title{
     font-size:28px;
     font-weight:600;
     letter-spacing:2px;
-    margin-bottom:50px;
+    margin-bottom:40px;
 }
 
 /* Submitted Section */
+
 .submitted-box{
     display:flex;
     justify-content:space-between;
-    gap:550px;
+    gap:450px;
 
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(15px);
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
     padding:40px;
     border-radius:20px;
-    margin-bottom:30px;
+    margin-bottom:40px;
     box-shadow:0 15px 35px rgba(0,0,0,0.4);
+
+    flex-wrap:wrap;
 }
 
 .submitted{
-    width:45%;
-    text-align:left;  
+    flex:1;
+    min-width:250px;
+    text-align:left;
 }
 
 .submitted h2{
     font-size:22px;
-    margin-bottom:20px;
+    margin-bottom:15px;
 }
 
 .submitted p{
-    margin:10px 0;
+    margin:8px 0;
     font-size:16px;
 }
 
 /* Experiment Section */
+
 .experiment-section{
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(15px);
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
     padding:40px;
     border-radius:20px;
     box-shadow:0 15px 35px rgba(0,0,0,0.4);
 }
 
 .experiment-title{
-    font-size:35px;
+    font-size:32px;
     margin-bottom:30px;
     font-weight:bold;
 }
 
+/* Grid */
+
 .experiment-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
+    gap:25px;
 }
 
-/* Make link full size */
+/* Link */
+
 .experiment-link{
     text-decoration:none;
     display:block;
-    height:50%;
 }
 
-/* Experiment Cards */
+/* Card */
+
 .experiment-card{
-    background:white;
-    color:#333;
+    background:#294982;
+    color:#ffffff;
     border-radius:15px;
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
 
-    height:150px; /* SAME HEIGHT */
+    height:150px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
     text-align:center;
     transition:0.3s ease;
 }
 
 .experiment-card h3{
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
-/* Hover Effect */
+/* Hover */
+
 .experiment-link:hover .experiment-card{
     background: linear-gradient(
         135deg,
@@ -136,13 +148,7 @@ body{
         rgba(71,133,226,0.9)
     );
     color:white;
-    transform:translateY(-8px);
-}
-
-/* After Visiting */
-.experiment-link:visited .experiment-card{
-    background:#1e3c72;
-    color:white;
+    transform:translateY(-8px) scale(1.03);
 }
 
 </style>
@@ -152,10 +158,12 @@ body{
 
 <div class="container">
 
+    <!-- Logo -->
     <div class="logo">
         <img src="jainlogo.jpeg" alt="Logo">
     </div>
 
+    <!-- Course Title -->
     <div class="course-title">
         WEB TECHNOLOGIES (23CSE404)
     </div>
@@ -174,7 +182,7 @@ body{
             <h2>Submitted To</h2>
             <p><strong>Name:</strong> Prof. Junaid Rasool</p>
             <p><strong>Subject:</strong> Web Technologies</p>
-            <p><strong>College:</strong> Jain deemed to be University</p>
+            <p><strong>College:</strong> Jain Deemed to be University</p>
         </div>
 
     </div>
@@ -186,45 +194,42 @@ body{
 
         <div class="experiment-grid">
 
-             <a href="Exp_1/index.html" class="experiment-link">
+            <a href="Exp_1/index.html" class="experiment-link">
                 <div class="experiment-card">
                     <h3>Experiment 1</h3>
                     <p>Portfolio with HTML Only</p>
                 </div>
             </a>
 
-             <a href="Exp_2/index.html" class="experiment-link">
+            <a href="Exp_2/index.html" class="experiment-link">
                 <div class="experiment-card">
                     <h3>Experiment 2</h3>
                     <p>Ecommerce with HTML Only</p>
                 </div>
             </a>
 
-
-             <a href="Exp_3/index.html" class="experiment-link">
+            <a href="Exp_3/index.html" class="experiment-link">
                 <div class="experiment-card">
                     <h3>Experiment 3</h3>
                     <p>Portfolio with HTML & CSS</p>
                 </div>
             </a>
 
-
-             <a href="Exp_4/index.html" class="experiment-link">
+            <a href="Exp_4/index.html" class="experiment-link">
                 <div class="experiment-card">
                     <h3>Experiment 4</h3>
                     <p>Ecommerce with HTML & CSS</p>
                 </div>
             </a>
-            
 
-             <a href="Exp_5/index.html" class="experiment-link">
+            <a href="Exp_5/index.html" class="experiment-link">
                 <div class="experiment-card">
                     <h3>Experiment 5</h3>
                     <p>Calculator with JavaScript</p>
                 </div>
             </a>
 
-             <a href="Exp_6/index.html" class="experiment-link">
+            <a href="Exp_6/index.html" class="experiment-link">
                 <div class="experiment-card">
                     <h3>Experiment 6</h3>
                     <p>Registration Form with JavaScript</p>
