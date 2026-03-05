@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <style>
+            *{
+                padding:0;
+                margin:0;
+                box-sizing:border-box;
+                font-family:'Times New Roman', Times, serif;
+                font-weight:bold;
+            }
+            
+            /* Gradient Background */
+            body{
+                width:100%;
+                height:100vh;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                background: linear-gradient(135deg,#667eea,#764ba2,#6dd5ed);
+            }
+            
+            /* Calculator Box */
+            .calculator{
+                backdrop-filter: blur(15px);
+                background: rgba(255,255,255,0.15);
+                padding:25px;
+                border-radius:20px;
+                box-shadow:0 10px 40px rgba(0,0,0,0.3);
+                text-align:center;
+            }
+            
+            .calculator h1{
+                font-size:40px;
+                margin-bottom:10px;
+                color:white;
+            }
+            
+            /* Display */
+            .calculator input{
+                height:70px;
+                width:330px;
+                padding:10px;
+                margin:15px 0;
+                font-size:32px;
+                text-align:right;
+                border:none;
+                outline:none;
+                border-radius:10px;
+                background: linear-gradient(135deg,#ffffff,#e3e9f0);
+                box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
+            }
+            
+            /* Buttons */
+            .calculator button{
+                height:65px;
+                width:65px;
+                font-size:25px;
+                border-radius:12px;
+                border:none;
+                margin:7px;
+                cursor:pointer;
+                color:white;
+                background: linear-gradient(145deg,#36d1dc,#5b86e5);
+                box-shadow:0 4px 10px rgba(0,0,0,0.2);
+                transition:0.2s;
+            }
+            
+            /* Hover Effect */
+            .calculator button:hover{
+                transform:scale(1.08);
+                background: linear-gradient(145deg,#ff7eb3,#ff758c);
+            }
+            
+            /* Equal Button */
+            button[value="="]{
+                background: linear-gradient(145deg,#ff9966,#ff5e62);
+            }
+            
+            /* Footer text */
+            .calculator p{
+                margin-top:15px;
+                color:white;
+                font-size:18px;
+            } 
+        </style>
+    </head>
+    <body>
+        <div class="calculator">
+
+        <h1>Simple Calculator</h1>
+        
+        <div class="display">
+        <input type="text" id="inputbox">
+        </div>
+        
+        <div>
+        <button value="AC">AC</button>
+        <button value="DE">DE</button>
+        <button value="%">%</button>
+        <button value="/">/</button>
+        </div>
+        
+        <div>
+        <button value="7">7</button>
+        <button value="8">8</button>
+        <button value="9">9</button>
+        <button value="*">*</button>
+        </div>
+        
+        <div>
+        <button value="4">4</button>
+        <button value="5">5</button>
+        <button value="6">6</button>
+        <button value="+">+</button>
+        </div>
+        
+        <div>
+        <button value="1">1</button>
+        <button value="2">2</button>
+        <button value="3">3</button>
+        <button value="-">-</button>
+        </div>
+        
+        <div>
+        <button value="00">00</button>
+        <button value="0">0</button>
+        <button value=".">.</button>
+        <button value="=">=</button>
+        </div>
+        </div>
+
+
+    <script>
+
+        let display=document.getElementById('inputbox');
+        let buttons=document.querySelectorAll("button");
+        let buttonArray=Array.from(buttons);
+        
+        let string="";
+        
+        buttonArray.forEach(btn=>{
+            btn.addEventListener('click',function(event){
+
+        
+                if(event.target.innerHTML=='DE'){
+                    string=string.substring(0,string.length-1);
+                    display.value=string;
+                }
+                
+                else if(event.target.innerHTML=='AC'){
+                    string='';
+                    display.value=string;
+                }
+                
+                else if(event.target.innerHTML=='='){
+                    string=eval(string);
+                    display.value=string;
+                }
+                
+                else{
+                    string+=event.target.innerHTML;
+                    display.value=string;
+                }
+            });
+        });
+
+    </script>
+    </body>
+</html>
