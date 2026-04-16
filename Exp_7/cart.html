@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cart – Online Store</title>
+  <link rel="stylesheet" href="styles/shared.css">
+  <link rel="stylesheet" href="styles/cart.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo"><a href="index.html"><span class="brand">🛍️ Online Store</span></a></div>
+  <div class="search-wrapper">
+    <input type="text" id="search-input" placeholder="Search products…">
+    <span class="search-icon">🔍</span>
+    <div id="search-dropdown"></div>
+  </div>
+  <div class="nav-right">
+    <a href="login.html" id="nav-login-link">Login</a>
+    <div id="nav-user-menu">
+      <span class="nav-btn" id="nav-user-name" style="color:white;font-weight:600;"></span>
+      <button class="nav-btn" onclick="Store.logout()">Logout</button>
+    </div>
+    <a href="products.html">Products</a>
+    <a href="cart.html" class="cart-link">🛒 Cart <span id="cart-badge">0</span></a>
+  </div>
+</nav>
+
+<div class="cart-page">
+
+  <!-- CART ITEMS -->
+  <div class="cart-left">
+    <h2 class="section-title">🛒 My Cart</h2>
+    <div id="cart-items-container"></div>
+  </div>
+
+  <!-- ORDER SUMMARY -->
+  <div class="cart-right">
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">₹0</span></div>
+      <div class="summary-row"><span>Discount</span><span id="summary-discount" style="color:#22a06b;">-₹0</span></div>
+      <div class="summary-row"><span>Delivery</span><span id="summary-delivery" style="color:#22a06b;">FREE</span></div>
+      <div class="summary-divider"></div>
+      <div class="summary-row total-row"><span>Total</span><span id="summary-total">₹0</span></div>
+      <div class="savings-msg" id="savings-msg" style="display:none;"></div>
+      <button class="checkout-btn" onclick="handleCheckout()">Proceed to Checkout →</button>
+      <a href="products.html" class="continue-shopping">← Continue Shopping</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkout-modal" class="modal-overlay" style="display:none;" onclick="closeModal(event)">
+  <div class="modal-box">
+    <h3>🎉 Order Confirmed!</h3>
+    <p>Thank you for your order. Your items will be delivered in <strong>3-5 business days</strong>.</p>
+    <p id="modal-order-id" style="color:#aaa;font-size:13px;"></p>
+    <button class="modal-btn" onclick="confirmOrder()">Done</button>
+  </div>
+</div>
+
+<script src="js/store.js"></script>
+<script>
+  function renderCart() {
+    const cart = Store.getCart();
+    const container = document.getElementById('cart-items-container');
+
+    if (!cart.length) {
+      container.innerHTML = `
+        <div class="empty-cart">
+          <div style="font-size:72px;">🛒</div>
+          <h3>Your cart is empty</h3>
+          <p>Add products to your cart to see them here.</p>
+          <a href="products.html" class="checkout-btn" style="display:inline-block;text-decoration:none;text-align:center;">Browse Products</a>
+        </div>`;
+      updateSummary([], 0);
+      return;
+    }
+
+    container.innerHTML = cart.map(item => `
+      <div class="cart-item" id="cart-item-${item.id}">
+        <img src="${item.img}" alt="${item.name}">
+        <div class="cart-details">
+          <h3>${item.name}</h3>
+          <p class="cart-price">₹${item.price.toLocaleString()}</p>
+          <p class="cart-save">You save ₹${(item.oldPrice - item.price).toLocaleString()} on this item</p>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+            <span class="qty-display" id="qty-${item.id}">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+          </div>
+          <p class="item-total">Item Total: <strong>₹${(item.price * item.qty).toLocaleString()}</strong></p>
+          <button class="remove-btn" onclick="removeItem(${item.id})">🗑 Remove</button>
+        </div>
+      </div>`).join('');
+
+    const subtotal = cart.reduce((s, i) => s + i.oldPrice * i.qty, 0);
+    const total    = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    updateSummary(cart, subtotal, total);
+  }
+
+  function updateSummary(cart, subtotal, total) {
+    const discount = subtotal - total;
+    document.getElementById('summary-subtotal').textContent = `₹${(subtotal || 0).toLocaleString()}`;
+    document.getElementById('summary-discount').textContent = `-₹${(discount || 0).toLocaleString()}`;
+    document.getElementById('summary-total').textContent = `₹${(total || 0).toLocaleString()}`;
+    document.getElementById('summary-delivery').textContent = total > 500 ? 'FREE' : '₹50';
+    const savingsMsg = document.getElementById('savings-msg');
+    if (discount > 0) {
+      savingsMsg.style.display = 'block';
+      savingsMsg.textContent = `🎉 You're saving ₹${discount.toLocaleString()} on this order!`;
+    }
+  }
+
+  function changeQty(id, delta) {
+    const cart = Store.getCart();
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    const newQty = item.qty + delta;
+    if (newQty < 1) { removeItem(id); return; }
+    Store.updateQty(id, newQty);
+    renderCart();
+  }
+
+  function removeItem(id) {
+    Store.removeFromCart(id);
+    showToast("Item removed from cart.");
+    renderCart();
+  }
+
+  function handleCheckout() {
+    const user = Store.getUser();
+    if (!user) {
+      showToast("Please login to proceed with checkout.", "error");
+      setTimeout(() => window.location.href = "login.html", 1200);
+      return;
+    }
+    if (!Store.getCart().length) {
+      showToast("Your cart is empty!", "error");
+      return;
+    }
+    const orderId = "ORD" + Date.now().toString().slice(-8);
+    document.getElementById('modal-order-id').textContent = `Order ID: ${orderId}`;
+    document.getElementById('checkout-modal').style.display = 'flex';
+  }
+
+  function confirmOrder() {
+    Store.saveCart([]);
+    renderCart();
+    document.getElementById('checkout-modal').style.display = 'none';
+    showToast("Order placed successfully! 🎉");
+  }
+
+  function closeModal(e) {
+    if (e.target.id === 'checkout-modal') document.getElementById('checkout-modal').style.display = 'none';
+  }
+
+  renderCart();
+</script>
+</body>
+</html>
