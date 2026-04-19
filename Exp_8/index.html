@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiment 8 - PHP Form Handling & Validation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#e3f2fd,#ffffff);
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    color:#0d47a1;
+    margin-bottom:10px;
+    font-size:38px;
+}
+
+h2{
+    text-align:center;
+    color:#333;
+    margin-bottom:25px;
+}
+
+.section-title{
+    background:linear-gradient(45deg,#1565c0,#42a5f5);
+    color:white;
+    padding:14px;
+    border-radius:10px;
+    text-align:center;
+    margin:30px 0 15px;
+    font-size:24px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 8px 18px rgba(0,0,0,0.12);
+    margin-bottom:30px;
+}
+
+th{
+    background:#0d47a1;
+    color:white;
+    padding:15px;
+}
+
+td{
+    text-align:center;
+    padding:18px;
+    border-bottom:1px solid #eee;
+}
+
+tr:hover{
+    background:#f5faff;
+}
+
+.image-box{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.image-box img{
+    width:180px;
+    height:120px;
+    object-fit:cover;
+    border-radius:10px;
+    cursor:pointer;
+    border:3px solid #e3f2fd;
+    transition:0.3s;
+}
+
+.image-box img:hover{
+    transform:scale(1.08);
+    border-color:#2196f3;
+}
+
+/* Popup Viewer */
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.popup img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+
+.popup span{
+    position:absolute;
+    top:25px;
+    right:35px;
+    color:rgb(227, 7, 7);
+    font-size:40px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    margin-top:20px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Experiment 8</h1>
+<h2>Perform Form Handling and Form Validation for E-commerce using PHP</h2>
+
+<div class="section-title">1. Form Handling in PHP</div>
+
+<table>
+<tr>
+    <th>Step</th>
+    <th>Images</th>
+</tr>
+
+
+<tr>
+    <td>Signup Form</td>
+    <td>
+        <div class="image-box">
+           <img src="Form_Handling_images/signup.png" onclick="openImage(this.src)">
+        </div>
+    </td>
+</tr>
+
+<tr>
+<td>Login Form</td>
+<td>
+<div class="image-box">
+<img src="Form_Handling_images/login.png" onclick="openImage(this.src)">
+</div>
+</td>
+</tr>
+
+<tr>
+<td>Checkout Form</td>
+<td>
+<div class="image-box">
+<img src="Form_Handling_images/checkout1.png" onclick="openImage(this.src)">
+<img src="Form_Handling_images/checkout2.png" onclick="openImage(this.src)">
+</div>
+</td>
+</tr>
+
+<tr>
+    <td>Product Form</td>
+    <td>
+        <div class="image-box">
+           <img src="Form_Handling_images/product1.png" onclick="openImage(this.src)">
+           <img src="Form_Handling_images/product2.png" onclick="openImage(this.src)">
+        </div>
+    </td>
+</tr>
+
+
+<tr>
+<td>PHP Data Handling</td>
+<td>
+<div class="image-box">
+<img src="Form_Handling_images/phpdh1.png" onclick="openImage(this.src)">
+<img src="Form_Handling_images/phpdh2.png" onclick="openImage(this.src)">
+<img src="Form_Handling_images/phpdh3.png" onclick="openImage(this.src)">
+</div>
+</td>
+</tr>
+
+</table>
+
+<div class="section-title">2. Form Validation in PHP</div>
+
+<table>
+<tr>
+<th>Validation Type</th>
+<th>Images</th>
+</tr>
+
+<tr>
+    <td>Required Field Validation</td>
+    <td>
+        <div class="image-box">
+            <img src="Form_Validation_images/requiredvalidation.png" onclick="openImage(this.src)">
+        </div>
+    </td>
+</tr>
+
+<tr>
+<td>Email Validation</td>
+<td>
+<div class="image-box">
+<img src="Form_Validation_images/emailvalidation.png" onclick="openImage(this.src)">
+</div>
+</td>
+</tr>
+
+<tr>
+    <td>Password Validation</td>
+    <td>
+        <div class="image-box">
+            <img src="Form_Validation_images/password1.png" onclick="openImage(this.src)">
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td>Mobile Number Validation</td>
+    <td>
+        <div class="image-box">
+            <img src="Form_Validation_images/mobilenumber.png" onclick="openImage(this.src)">
+        </div>
+    </td>
+</tr>
+
+
+<tr>
+    <td>Price Validation</td>
+    <td>
+        <div class="image-box">
+            <img src="Form_Validation_images/pricevalidation.png" onclick="openImage(this.src)">
+        </div>
+    </td>
+</tr>
+
+
+</table>
+
+<footer>Designed & Developed by Mahfuj Ansari</footer>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+<span onclick="closeImage()">&times;</span>
+<img id="popup-img">
+</div>
+
+<script>
+function openImage(src){
+    document.getElementById("popup").style.display="flex";
+    document.getElementById("popup-img").src=src;
+}
+
+function closeImage(){
+    document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
+</html>

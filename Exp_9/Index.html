@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 8 - PHP Form Handling & Validation</title>
+    
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+    
+    body{
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg,#e3f2fd,#ffffff);
+        padding:30px;
+    }
+    
+    h1{
+        text-align:center;
+        color:#0d47a1;
+        margin-bottom:10px;
+        font-size:38px;
+    }
+    
+    h2{
+        text-align:center;
+        color:#333;
+        margin-bottom:25px;
+    }
+    
+    .section-title{
+        background:linear-gradient(45deg,#1565c0,#42a5f5);
+        color:white;
+        padding:14px;
+        border-radius:10px;
+        text-align:center;
+        margin:30px 0 15px;
+        font-size:24px;
+    }
+    
+    table{
+        width:100%;
+        border-collapse:collapse;
+        background:#fff;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 8px 18px rgba(0,0,0,0.12);
+        margin-bottom:30px;
+    }
+    
+    th{
+        background:#0d47a1;
+        color:white;
+        padding:15px;
+        font-size: 25px;
+    }
+    
+    td{
+        text-align:center;
+        padding:18px;
+        border-bottom:1px solid #eee;
+    }
+    
+    tr:hover{
+        background:#f5faff;
+    }
+    
+    .image-box{
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:12px;
+    }
+    
+    .image-box img{
+        width:180px;
+        height:120px;
+        object-fit:cover;
+        border-radius:10px;
+        cursor:pointer;
+        border:3px solid #e3f2fd;
+        transition:0.3s;
+    }
+    
+    .image-box img:hover{
+        transform:scale(1.08);
+        border-color:#2196f3;
+    }
+    
+    /* Popup Viewer */
+    .popup{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.85);
+        display:none;
+        justify-content:center;
+        align-items:center;
+        z-index:999;
+    }
+    
+    .popup img{
+        max-width:90%;
+        max-height:90%;
+        border-radius:15px;
+        box-shadow:0 0 20px rgba(255,255,255,0.4);
+    }
+    
+    .popup span{
+        position:absolute;
+        top:25px;
+        right:35px;
+        color:rgb(227, 7, 7);
+        font-size:40px;
+        cursor:pointer;
+        font-weight:bold;
+    }
+    
+    footer{
+        text-align:center;
+        margin-top:20px;
+        color:#555;
+    }
+</style>
+
+</head>
+    
+<body>
+
+<h1>Experiment 9</h1>
+<div class="section-title">Create, store, retrieve and display the product details for E-commerce using PHP and MySQL </div>
+
+
+<!--Insert Operations-->
+<table>        
+    <tr>
+        <th>Insert</th>
+        <th></th>
+    </tr>
+
+      <!--// Before-->
+      <tr>
+          <td>Before Inserting Products</td>
+          <td>
+              <div class="image-box">
+                <img src="websites_images/insert1.png" onclick="openImage(this.src)">
+                <img src="Database_images/insert1.png" onclick="openImage(this.src)">
+              </div>
+          </td>
+      </tr>
+
+
+       <tr>
+          <td>
+              <div class="image-box">
+                <img src="websites_images/adding.png" onclick="openImage(this.src)">
+                <img src="websites_images/adding2.png" onclick="openImage(this.src)">
+              </div>
+          </td>
+          <td>Adding New Products</td>
+      </tr>
+
+      <tr>
+          <td>After Inserting Products</td>
+          <td>
+              <div class="image-box">
+                <img src="websites_images/added.png" onclick="openImage(this.src)">
+                <img src="Database_images/added.png" onclick="openImage(this.src)">
+              </div>
+          </td>
+      </tr>
+
+</table>
+
+
+
+
+<!--Update Operations-->
+<table>        
+    <tr>
+        <th>Update</th>
+        <th></th>
+    </tr>
+
+      <!--// Before-->
+      <tr>
+          <td>Before Updating Products</td>
+          <td>
+              <div class="image-box">
+                <img src="websites_images/update.png" onclick="openImage(this.src)">
+                <img src="Database_images/update1.png" onclick="openImage(this.src)">
+              </div>
+          </td>
+      </tr>
+
+
+       <tr>
+          <td>
+              <div class="image-box">
+                <img src="websites_images/Updating1.png" onclick="openImage(this.src)">
+                <img src="websites_images/updating2.png" onclick="openImage(this.src)">
+              </div>
+          </td>
+          <td>Updating Products</td>
+      </tr>
+
+      <tr>
+          <td>After Updating Products</td>
+          <td>
+              <div class="image-box">
+                <img src="websites_images/updated.png" onclick="openImage(this.src)">
+                <img src="Database_images/updated.png" onclick="openImage(this.src)">
+              </div>
+          </td>
+      </tr>
+
+</table>
+
+
+
+
+<!--Delete Operations-->
+<table>        
+    <tr>
+        <th>Delete</th>
+        <th></th>
+    </tr>
+
+      <!--// Before-->
+      <tr>
+          <td>Before Deleting Products</td>
+          <td>
+              <div class="image-box">
+                <img src="websites_images/delete.png" onclick="openImage(this.src)">
+                <img src="Database_images/delete.png" onclick="openImage(this.src)">
+              </div>
+          </td>
+      </tr>
+
+      <tr>
+          <td>After Deleting Products</td>
+          <td>
+              <div class="image-box">
+                <img src="websites_images/deleted.png" onclick="openImage(this.src)">
+                <img src="Database_images/deleted.png" onclick="openImage(this.src)">
+              </div>
+          </td>
+      </tr>
+
+</table>
+
+
+
+<footer>Designed & Developed by Mahfuj Ansari</footer>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+<span onclick="closeImage()">&times;</span>
+<img id="popup-img">
+</div>
+
+<script>
+function openImage(src){
+    document.getElementById("popup").style.display="flex";
+    document.getElementById("popup-img").src=src;
+}
+
+function closeImage(){
+    document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
+</html>
