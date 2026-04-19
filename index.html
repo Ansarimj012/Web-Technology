@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Web Technologies</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 
+/* RESET */
 *{
     margin:0;
     padding:0;
@@ -14,141 +17,158 @@
     font-family:'Segoe UI',sans-serif;
 }
 
+/* BODY (🔥 PREMIUM BACKGROUND) */
 body{
-    min-height:100vh;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(0,120,255,0.25), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255,0,150,0.15), transparent 40%),
+        linear-gradient(135deg,#0a0f2c,#0f1b4d,#081229);
+
+    color:white;
     display:flex;
     justify-content:center;
     align-items:center;
-
-    background: linear-gradient(
-        135deg,
-        rgba(10,25,70,0.95),
-        rgba(25,70,150,0.90),
-        rgba(0,120,255,0.85)
-    );
-
-    color:white;
+    min-height:100vh;
 }
 
+/* CONTAINER */
 .container{
     width:90%;
-    max-width:1200px;
-    text-align:center;
+    max-width:900px;
 }
 
-/* Logo */
-
+/* LOGO */
 .logo img{
-    margin-top:10px;
-    width:260px;
+    width:160px;
+    display:block;
+    margin:20px auto;
+}
+
+/* TITLE */
+.course-title{
+    text-align:center;
+    font-size:26px;
     margin-bottom:20px;
 }
 
-/* Course Title */
-
-.course-title{
-    font-size:28px;
-    font-weight:600;
-    letter-spacing:2px;
-    margin-bottom:40px;
-}
-
-/* Submitted Section */
-
+/* SUBMITTED BOX */
 .submitted-box{
     display:flex;
     justify-content:space-between;
-    gap:450px;
-
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(15px);
-    padding:40px;
-    border-radius:20px;
-    margin-bottom:40px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.4);
-
+    gap:350px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:30px;
     flex-wrap:wrap;
 }
 
 .submitted{
     flex:1;
     min-width:250px;
-    text-align:left;
 }
 
-.submitted h2{
-    font-size:22px;
-    margin-bottom:15px;
+/* SECTION */
+.section{
+    margin-bottom:35px;
+    padding-left:10px;
 }
 
-.submitted p{
-    margin:8px 0;
-    font-size:16px;
+/* HEADER */
+.section-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:20px;
+    font-weight:600;
 }
 
-/* Experiment Section */
-
-.experiment-section{
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(15px);
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+/* LINE */
+.section-line{
+    height:3px;
+    width:100%;
+    margin:8px 0 15px;
 }
 
-.experiment-title{
-    font-size:32px;
-    margin-bottom:30px;
-    font-weight:bold;
-}
+/* COLORS */
+.html-line{ background:#ff6b35; }
+.css-line{ background:#264de4; }
+.js-line{ background:#f7df1e; }
+.php-line{ background:#8892be; }
 
-/* Grid */
-
-.experiment-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-/* Link */
-
-.experiment-link{
-    text-decoration:none;
-    display:block;
-}
-
-/* Card */
-
-.experiment-card{
-    background:#294982;
-    color:#ffffff;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
-
-    height:150px;
+/* LIST */
+.grid{
     display:flex;
     flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-    transition:0.3s ease;
+    gap:18px;
 }
 
-.experiment-card h3{
-    margin-bottom:8px;
-}
-
-/* Hover */
-
-.experiment-link:hover .experiment-card{
-    background: linear-gradient(
-        135deg,
-        rgba(86,134,189,0.9),
-        rgba(71,133,226,0.9)
-    );
+/* CARD (🔥 GLASS BUTTON STYLE) */
+.card{
+    text-decoration:none;
     color:white;
-    transform:translateY(-8px) scale(1.03);
+    padding:12px 16px;
+    border-radius:8px;
+    position:relative;
+    overflow:hidden;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+}
+
+/* SHINE ANIMATION */
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.25),transparent);
+    transition:0.6s;
+}
+
+.card:hover::before{
+    left:100%;
+}
+
+/* TITLE */
+.card h3{
+    font-size:18px;
+    font-weight:500;
+    position:relative;
+    display:inline-block;
+}
+
+/* DESCRIPTION */
+.card p{
+    font-size:13px;
+    opacity:0.75;
+    margin-top:3px;
+}
+
+/* UNDERLINE ANIMATION */
+.card h3::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-2px;
+    width:0%;
+    height:2px;
+    background:white;
+    transition:0.3s;
+}
+
+.card:hover h3::after{
+    width:100%;
+}
+
+/* LIFT EFFECT */
+.card:hover{
+    transform:translateX(6px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+  
 }
 
 </style>
@@ -158,118 +178,133 @@ body{
 
 <div class="container">
 
-    <!-- Logo -->
+    <!-- LOGO -->
     <div class="logo">
-        <img src="jainlogo.jpeg" alt="Logo">
+        <img src="jainlogo.jpeg">
     </div>
 
-    <!-- Course Title -->
-    <div class="course-title">
-        WEB TECHNOLOGIES (23CSE404)
-    </div>
+    <!-- TITLE -->
+    <div class="course-title">WEB TECHNOLOGIES (23CSE404)</div>
 
-    <!-- Submitted Section -->
+    <!-- SUBMITTED -->
     <div class="submitted-box">
-
         <div class="submitted">
-            <h2>Submitted By</h2>
-            <p><strong>Name:</strong> Mahfuj Ansari</p>
-            <p><strong>Roll No:</strong> 24BTRCN079</p>
-            <p><strong>Department:</strong> CSE General A</p>
+            <h3>Submitted By</h3>
+            <p>Mahfuj Ansari</p>
+            <p>24BTRCN079</p>
         </div>
 
         <div class="submitted">
-            <h2>Submitted To</h2>
-            <p><strong>Name:</strong> Prof. Junaid Rasool</p>
-            <p><strong>Subject:</strong> Web Technologies</p>
-            <p><strong>College:</strong> Jain Deemed to be University</p>
+            <h3>Submitted To</h3>
+            <p>Prof. Junaid Rasool</p>
+            <p>Jain University</p>
         </div>
-
     </div>
 
-    <!-- Experiment Section -->
-    <div class="experiment-section">
-
-        <div class="experiment-title">Experiment List</div>
-
-        <div class="experiment-grid">
-
-            <a href="Exp_1/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 1</h3>
-                    <p>Portfolio with HTML Only</p>
-                </div>
-            </a>
-
-            <a href="Exp_2/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 2</h3>
-                    <p>Ecommerce with HTML Only</p>
-                </div>
-            </a>
-
-            <a href="Exp_3/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 3</h3>
-                    <p>Portfolio with HTML & CSS</p>
-                </div>
-            </a>
-
-            <a href="Exp_4/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 4</h3>
-                    <p>Ecommerce with HTML & CSS</p>
-                </div>
-            </a>
-
-            <a href="Exp_5/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 5</h3>
-                    <p>Calculator with JavaScript</p>
-                </div>
-            </a>
-
-            <a href="Exp_6/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 6</h3>
-                    <p>Registration Form with JavaScript</p>
-                </div>
-            </a>
-
-            <a href="Exp_7/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 7</h3>
-                    <p>Event Handling In E-Commerce</p>
-                </div>
-            </a>
-            <br>
-
-             <a href="Exp_8/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 8</h3>
-                    <p>Form Handling and Form Validation in Eccomerce</p>
-                </div>
-            </a>
-
-             <a href="Exp_9/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 9</h3>
-                    <p>Create, store, retrieve and display the product details of e-commerce </p>
-                </div>
-            </a>
-
-
-
-              <a href="Exp_10/index.html" class="experiment-link">
-                <div class="experiment-card">
-                    <h3>Experiment 9</h3>
-                    <p> Use sessions and cookies to maintain user data across multiple pages in E-commerce.</p>
-                </div>
-            </a>
-
-
+    <!-- HTML -->
+    <div class="section">
+        <div class="section-header">
+            <i class="fa-brands fa-html5" style="color:#ff6b35;"></i>
+            <span>HTML</span>
         </div>
+        <div class="section-line html-line"></div>
 
+        <div class="grid">
+            <a href="Exp_1/index.html" class="card">
+                <h3>Exp 1</h3>
+                <p>Portfolio using HTML only</p>
+            </a>
+
+            <a href="Exp_2/index.html" class="card">
+                <h3>Exp 2</h3>
+                <p>E-commerce layout using HTML</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- HTML + CSS -->
+    <div class="section">
+        <div class="section-header">
+            <i class="fa-brands fa-html5" style="color:#ff6b35;"></i>
+            HTML +
+            <i class="fa-brands fa-css3-alt" style="color:#264de4;"></i>
+            CSS
+        </div>
+        <div class="section-line css-line"></div>
+
+        <div class="grid">
+            <a href="Exp_3/index.html" class="card">
+                <h3>Exp 3</h3>
+                <p>Styled portfolio using CSS</p>
+            </a>
+
+            <a href="Exp_4/index.html" class="card">
+                <h3>Exp 4</h3>
+                <p>Styled e-commerce website</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <div class="section">
+        <div class="section-header">
+            <i class="fa-brands fa-js" style="color:#f7df1e;"></i>
+            JavaScript +
+            <i class="fa-brands fa-html5" style="color:#ff6b35;"></i>
+            HTML +
+            <i class="fa-brands fa-css3-alt" style="color:#264de4;"></i>
+            CSS
+        </div>
+        <div class="section-line js-line"></div>
+
+        <div class="grid">
+            <a href="Exp_5/index.html" class="card">
+                <h3>Exp 5</h3>
+                <p>Calculator using JavaScript</p>
+            </a>
+
+            <a href="Exp_6/index.html" class="card">
+                <h3>Exp 6</h3>
+                <p>Form validation using JS</p>
+            </a>
+
+            <a href="Exp_7/index.html" class="card">
+                <h3>Exp 7</h3>
+                <p>Event handling in e-commerce</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- PHP -->
+    <div class="section">
+        <div class="section-header">
+            <i class="fa-brands fa-php" style="color:#8892be;"></i>
+            PHP +
+            <i class="fa-brands fa-js" style="color:#f7df1e;"></i>
+            JS +
+            <i class="fa-brands fa-html5" style="color:#ff6b35;"></i>
+            HTML +
+            <i class="fa-brands fa-css3-alt" style="color:#264de4;"></i>
+            CSS
+        </div>
+        <div class="section-line php-line"></div>
+
+        <div class="grid">
+            <a href="Exp_8/index.html" class="card">
+                <h3>Exp 8</h3>
+                <p>Form handling using PHP</p>
+            </a>
+
+            <a href="Exp_9/index.html" class="card">
+                <h3>Exp 9</h3>
+                <p>Database operations using MySQL</p>
+            </a>
+
+            <a href="Exp_10/index.html" class="card">
+                <h3>Exp 10</h3>
+                <p>Sessions and cookies handling</p>
+            </a>
+        </div>
     </div>
 
 </div>
